@@ -7,7 +7,7 @@ This project implements an end-to-end **ELT data pipeline** using AWS S3 and Sno
 
 The pipeline follows a layered architecture:
 
-**S3 → Snowpipe → Bronze → Silver → Gold → Power BI**
+**S3 → Cloud_Integration → Bronze → Silver → Gold → Power BI**
 
 The project demonstrates practical implementation of Snowflake data engineering concepts including **Snowpipe, Streams, Tasks, Stored Procedures, SQL transformations, audit logging, dimensional modeling, and automated notifications**.
 
