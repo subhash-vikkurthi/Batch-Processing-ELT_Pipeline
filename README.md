@@ -29,8 +29,8 @@ The project demonstrates practical implementation of Snowflake data engineering 
                              │
                              ▼
                     ┌──────────────────┐
-                    │    Snowpipe      │
-                    │ Auto Ingestion   │
+                    │    Snowflake     │
+                    │    Ingestion     │
                     └────────┬─────────┘
                              │
                              ▼
@@ -39,7 +39,6 @@ The project demonstrates practical implementation of Snowflake data engineering 
                     │ Raw Data         │
                     └────────┬─────────┘
                              │
-                       Streams/Tasks
                              │
                              ▼
                     ┌──────────────────┐
@@ -87,9 +86,6 @@ The project demonstrates practical implementation of Snowflake data engineering 
 | Python            | Data generation and file creation |
 | Amazon S3         | Cloud object storage              |
 | Snowflake         | Data warehouse and ELT processing |
-| Snowpipe          | Automated data ingestion          |
-| Snowflake Streams | Change data capture               |
-| Snowflake Tasks   | Pipeline automation               |
 | Stored Procedures | Transformation framework          |
 | SQL               | Data transformation and analysis  |
 | Power BI          | Data visualization                |
@@ -147,12 +143,12 @@ S3
     └── sales_003.csv
 ```
 
-### 3. Snowpipe
+### 3. Stage
 
 Snowpipe automatically loads newly arrived CSV files from S3 into the Snowflake Bronze table.
 
 ```text
-S3 → Snowpipe → Bronze Table
+S3 → Stage → Bronze Table
 ```
 
 ### 4. Bronze Layer
@@ -161,19 +157,8 @@ The Bronze layer stores the ingested raw data with minimal transformation.
 
 This layer preserves the source-level data for traceability and downstream processing.
 
-### 5. Streams
 
-A Snowflake Stream tracks newly inserted or changed records in the Bronze layer.
-
-This allows downstream processing to identify new data without repeatedly processing the entire Bronze table.
-
-### 6. Tasks
-
-Snowflake Tasks automate the execution of the transformation workflow.
-
-The task processes newly available records and loads them into the Silver layer.
-
-### 7. Stored Procedures
+### 5. Stored Procedures
 
 Stored procedures are used to organize transformation logic and automate repetitive ELT operations.
 
@@ -187,7 +172,7 @@ Examples include:
 * Fact loading
 * Audit logging
 
-### 8. Silver Layer
+### 6. Silver Layer
 
 The Silver layer contains cleaned and transformed data.
 
@@ -201,7 +186,7 @@ product_overview
 fact_sales_data
 ```
 
-### 9. Dimensional Model
+### 7. Dimensional Model
 
 The analytical model follows a **star schema** consisting of:
 
@@ -226,7 +211,7 @@ The fact table contains transactional measures such as:
 * Customer Satisfaction
 * Days to Ship
 
-### 10. Gold Layer
+### 8. Gold Layer
 
 The Gold layer contains business-ready views for analytics.
 
@@ -243,7 +228,7 @@ Examples include:
 * Customer Revenue Contribution
 * Product Revenue Contribution
 
-### 11. Power BI
+### 9. Power BI
 
 The Gold-layer views are connected to Power BI to create interactive dashboards for business analysis.
 
@@ -254,14 +239,9 @@ The Gold-layer views are connected to Power BI to create interactive dashboards 
 * ETL vs ELT
 * Cloud storage
 * Data ingestion
-* Snowpipe
 * External stages
 * Storage integrations
-* Streams
-* Tasks
 * Stored Procedures
-* Change Data Capture
-* Incremental processing
 * Audit logging
 * Error handling
 * Dimensional modeling
